@@ -1,0 +1,19 @@
+第三版Java大学实用教程
+
+此处放一些看书学的例子，都很简单。
+
+例1：用户在键盘依次输入若干个数字，每输入一个数字都需要按回车键确认，最后在键盘输入一个非数字字符串结束整个输入操作过程。程序将计算出这些数的和以及平均值。（此处只用到了main函数，没用到类）
+
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		double sum = 0.0;
+		int num = 0;
+		while( in.hasNextDouble())
+		{
+			sum += in.nextDouble();
+			num ++;
+		}
+		System.out.printf("%d个数的和是%f%n", num,sum);		/*此处可以用\n或者%n来换行，但是书上说java推荐使用%n，这是为什么，用%n在程序的效率和质量上有什么体现吗？*/
+
+		System.out.printf("%d个数的平均值是%f", num,sum/num);
+	}
