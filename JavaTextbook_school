@@ -14,6 +14,69 @@ public static void main(String[] args) {
 			num ++;
 		}
 		System.out.printf("%d个数的和是%f%n", num,sum);		/*此处可以用\n或者%n来换行，但是书上说java推荐使用%n，这是为什么，用%n在程序的效率和质量上有什么体现吗？*/
-
 		System.out.printf("%d个数的平均值是%f", num,sum/num);
 	}
+
+
+例2：使用数组。（此处只用到了main函数，没用到类）
+
+public static void main(String[] args) {
+		int[] a = {1,2,3};
+		int[] b = {10,11};
+		char[] c = {'c','a','t'};
+		
+		System.out.println(c);		//对于char[],println(c)不会输出地址，而是会输出全部元素的值，即作为字符串输出
+		System.out.printf("a[0]=%d,a[1]=%d,a[2]=%d\n",a[0],a[1],a[2]);
+		System.out.printf("b[0]=%d,b[1]=%d\n",b[0],b[1]);
+		System.out.println("数组a的引用是："+a);		//输出的是a的地址
+		System.out.println("数组b的引用是："+b);
+		
+		b = a;
+		System.out.println("数组a的引用是："+a);
+		System.out.println("数组b的引用是："+b);
+	}
+
+
+例3：用户输入移位运算的两个操作元，程序给出右移和左移后的结果。（此处只用到了main函数，没用到类）
+
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("请输入待移位的int型整数：");
+		int x = in.nextInt();
+		System.out.println("请输入移位量：");
+		int n = in.nextInt();
+		System.out.println("左移位的结果是："+(x<<n));	//二进制移位，可参考十进制移位来理解，具体二进制移位规则请见书p24
+		System.out.println("右移位的结果是："+(x>>n));
+	}
+
+
+例4：利用“异或”运算的性质，对几个字符进行加密并输出密文，再解密。（此处只用到了main函数，没用到类）
+
+小知识：如果a^b->c,那么c^b->a,即对同一个数（a）进行两次“异或”运算的结果仍是a。
+
+public static void main(String[] args) {
+		char[] a = {'金','木','水','火','土'};
+		char secret = 'z';
+		for( int i=0; i<a.length; i++)		//加密
+		{
+			a[i] = (char)(a[i]^secret);		//此处必须强制转换成char类型，否则报错，为什么呢？难道他们异或得到的不是一个char类型数据吗？
+		}
+		System.out.println("密文：");
+		for( int i=0; i<a.length; i++)
+		{
+			System.out.printf("%3c", a[i]);
+		}
+		
+		for( int i=0; i<a.length; i++)		//解密
+		{
+			a[i] = (char)(a[i]^secret);		
+		}
+		System.out.printf("\n原文：\n");
+		for( int i=0; i<a.length; i++)
+		{
+			System.out.printf("%3c", a[i]);
+		}
+	}
+
+
+例5：
