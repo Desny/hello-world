@@ -78,5 +78,171 @@ public static void main(String[] args) {
 		}
 	}
 
+例5：使用java.until包中的Date类，用来显示本机的当前时间。
 
-例5：
+import java.util.Date;
+
+public class Hello {
+
+	public static void main(String[] args) {
+		Date date = new Date();
+		System.out.println(date);
+	}
+}
+
+输出形式如下（CST指的是一种时间规定，能够同时给出四个地区的标准时间）
+Sat Dec 03 09:54:20 CST 2016
+
+
+例6：设置矩形和圆形的相关参数，并显示两个形状的相对位置。（共有三个类，Rectangle,Circle,Geometry。具体要求见书p64）
+
+package geometry;
+
+public class Rectangle {
+	private double x;
+	private double y;
+	private double width;
+	private double height;
+	
+	public void setX(double x) {
+		this.x = x;
+	}
+	
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public void setWidth(double w) {
+		if( w<=0 ){
+			this.width = 0;
+		}else{
+			this.width = w;
+		}
+	}
+	
+	public void setHeight(double h) {
+		if( h<=0 ){
+			this.height = 0;
+		}else{
+			this.height = h;
+		}
+	}
+	
+	public double getX() {
+		return x;
+	}
+	
+	public double getY() {
+		return y;
+	}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	public double getHeight() {
+		return height;
+	}
+	
+}
+
+package geometry;
+
+public class Circle {
+	private double x;
+	private double y;
+	private double radius;
+	
+	public void setX(double x) {
+		this.x = x;
+	}
+	
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public void setRadius(double r) {
+		if( r<=0 ){
+			this.radius = 0;
+		}else{
+			this.radius = r;
+		}
+	}
+	
+	public double getX() {
+		return x;
+	}
+	
+	public double getY() {
+		return y;
+	}
+	
+	public double getRadius() {
+		return radius;
+	}
+}
+
+package geometry;
+
+public class Geometry {
+	private Rectangle rect;
+	private Circle circle;
+	
+	public Geometry( Rectangle rect, Circle circle ) {
+		this.rect = rect;
+		this.circle = circle;
+	}
+	
+	public void setRectPos( double x, double y ) {
+		rect.setX(x);
+		rect.setY(y);
+	}
+	
+	public void setCirPos( double x, double y ) {
+		circle.setX(x);
+		circle.setY(y);
+	}
+	
+	public void setRectW_H( double w ,double h ) {
+		rect.setWidth(w);
+		rect.setHeight(h);
+	}
+	
+	public void setCirRadius( double r ) {
+		circle.setRadius(r);
+	}
+	
+	public void showPos() {
+		if( circle.getX()-rect.getX()==rect.getWidth() ){
+			System.out.println("矩形在圆形的左边。");
+		}else if( rect.getX()-circle.getX()==circle.getRadius()*2 ){
+			System.out.println("矩形在圆形的右边。");
+		}
+	}
+	
+	public static void main(String[] args) {
+		Rectangle rect1 = new Rectangle();
+		Rectangle rect2 = new Rectangle();
+		Circle circle1 = new Circle();
+		Circle circle2 = new Circle();
+		Geometry g1 = new Geometry(rect1, circle1);
+		Geometry g2 = new Geometry(rect2, circle2);
+		
+		g1.setRectPos(30, 40);
+		g1.setRectW_H(120, 80);
+		g1.setCirPos(150, 30);
+		g1.setCirRadius(60);
+		
+		g2.setRectPos(160, 160);
+		g2.setRectW_H(120, 80);
+		g2.setCirPos(40, 30);
+		g2.setCirRadius(60);
+		
+		g1.showPos();
+		g2.showPos();
+	}
+
+}
+
+
+例7：
