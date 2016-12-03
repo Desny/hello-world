@@ -245,4 +245,31 @@ public class Geometry {
 }
 
 
-例7：
+例7：将一个字符数组中的小写字母变成大写字母，并将大写字母变成小写字母。（此处只用到了main函数，没用到类）
+
+public static void main(String[] args) {
+		char[] a = {'a','b','c','D','E','F'};
+		for( int i=0; i<a.length; i++ ){
+			if( Character.isLowerCase(a[i]) ){
+				a[i] = Character.toUpperCase(a[i]);
+			}else if( Character.isUpperCase(a[i]) ){
+				a[i] = Character.toLowerCase(a[i]);
+			}
+		}
+		System.out.println(a);
+	}
+	
+	
+例8：使用对象数组。（此处只用到了main函数，没用到类）
+public static void main(String[] args) {
+		Integer[] a = new Integer[3];
+		for( int i=0; i<a.length; i++ ){
+			a[i] = new Integer(101+i);		//注意此处要为每一个数组元素创建一个对象
+		}
+		for( int i=0; i<a.length; i++ ){
+			System.out.println(a[i].intValue());
+		}
+	}
+	
+
+例9：
